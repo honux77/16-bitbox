@@ -96,6 +96,7 @@ export function useVGMPlayer() {
         GetTrackLengthDirect: Module.cwrap('GetTrackLengthDirect', 'number', ['string']),
         SetSampleRate: Module.cwrap('SetSampleRate', 'number', ['number']),
         SetLoopCount: Module.cwrap('SetLoopCount', 'number', ['number']),
+        Seek: Module.cwrap('Seek', null, ['number']),
         ShowTitle: Module.cwrap('ShowTitle', 'string'),
       }
 
@@ -291,6 +292,7 @@ export function useVGMPlayer() {
 
     // Open and start VGM
     functionsRef.current.OpenVGMFile(track.path)
+    functionsRef.current.SetLoopCount(2)  // intro + 1 loop, then advance
     functionsRef.current.PlayVGM()
 
     const titleParts = (track.title || '').split('|||')
@@ -347,6 +349,14 @@ export function useVGMPlayer() {
     stop()
     setTimeout(() => play(prevIdx), 100)
   }, [currentTrackIndex, trackList.length, stop, play])
+
+  const seek = useCallback((seconds) => {
+    if (!functionsRef.current || !isPlayingRef.current) return
+    const samplePos = Math.floor(seconds * sampleRateRef.current)
+    functionsRef.current.Seek(samplePos)
+    uiStartRef.current = Date.now() - seconds * 1000
+    setElapsed(Math.floor(seconds))
+  }, [])
 
   // Unlock AudioContext synchronously on user gesture (important for mobile)
   const resumeAudio = useCallback(() => {
@@ -533,6 +543,7 @@ export function useVGMPlayer() {
     togglePlayback,
     nextTrack,
     prevTrack,
+    seek,
     resumeAudio
   }
 }

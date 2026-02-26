@@ -72,6 +72,7 @@ export function useSPCPlayer() {
   const [elapsed, setElapsed] = useState(0)
 
   const uiStartRef = useRef(null)
+  const currentTrackIdxRef = useRef(0)
   const contextRef = useRef(null)
   const nodeRef = useRef(null)
   const analyserRef = useRef(null)
@@ -313,6 +314,7 @@ export function useSPCPlayer() {
 
     setCurrentTrack(track)
     setCurrentTrackIndex(idx)
+    currentTrackIdxRef.current = idx
     isPlayingRef.current = true
     setIsPlaying(true)
 
@@ -362,6 +364,33 @@ export function useSPCPlayer() {
     const prevIdx = currentTrackIndex === 0 ? trackList.length - 1 : currentTrackIndex - 1
     play(prevIdx)
   }, [currentTrackIndex, trackList.length, play])
+
+  const seek = useCallback((seconds) => {
+    const engine = spcEngine
+    if (!engine || !isPlayingRef.current) return
+    const spcEntry = spcDataRef.current[currentTrackIdxRef.current]
+    if (!spcEntry) return
+
+    // Re-init SPC engine from the start of the track
+    const data = spcEntry.data
+    const spcPtr = engine.win.Module._malloc(data.length)
+    new Uint8Array(engine.win.HEAPU8.buffer, spcPtr, data.length).set(data)
+    engine._my_init(spcPtr, data.length)
+    engine.win.Module._free(spcPtr)
+
+    // Fast-forward to target position (SPC outputs at 32kHz)
+    const targetPairs = Math.floor(seconds * 32000)
+    const chunkPairs = 8192
+    const ffBuf = engine.win.Module._malloc(chunkPairs * 4) // 2ch * 2bytes
+    for (let i = 0; i < targetPairs; i += chunkPairs) {
+      const chunk = Math.min(chunkPairs, targetPairs - i)
+      engine._my_decode(ffBuf, chunk * 2)
+    }
+    engine.win.Module._free(ffBuf)
+
+    uiStartRef.current = Date.now() - seconds * 1000
+    setElapsed(Math.floor(seconds))
+  }, [])
 
   // Unlock AudioContext synchronously in a user-gesture callback
   // so that subsequent async play() calls are not blocked on mobile.
@@ -487,6 +516,7 @@ export function useSPCPlayer() {
     togglePlayback,
     nextTrack,
     prevTrack,
+    seek,
     resumeAudio
   }
 }

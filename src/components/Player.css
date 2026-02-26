@@ -352,6 +352,83 @@
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
+/* Progress Bar */
+.progress-bar-container {
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--border-color);
+  outline: none;
+  cursor: pointer;
+  display: block;
+}
+
+.progress-bar:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.progress-bar::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--accent-cyan) 0%,
+    var(--accent-cyan) calc(var(--progress, 0) * 100%),
+    rgba(74, 74, 106, 0.4) calc(var(--progress, 0) * 100%)
+  );
+}
+
+.progress-bar::-moz-range-track {
+  height: 4px;
+  background: rgba(74, 74, 106, 0.4);
+  border: none;
+}
+
+.progress-bar::-moz-range-progress {
+  height: 4px;
+  background: var(--accent-cyan);
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--accent-cyan);
+  border: 2px solid var(--bg-panel);
+  box-shadow: 0 0 6px var(--accent-cyan);
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+.progress-bar::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-cyan);
+  border: 2px solid var(--bg-panel);
+  box-shadow: 0 0 6px var(--accent-cyan);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.progress-bar:not(:disabled)::-webkit-slider-thumb:hover {
+  background: #fff;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.progress-times {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 8px;
+}
+
 /* Toast Message */
 .toast-message {
   position: fixed;
