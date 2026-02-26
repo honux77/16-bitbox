@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <!-- 초록 네온 글로우 -->
+    <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+    <!-- 분홍 네온 글로우 (약하게) -->
+    <filter id="glowPink" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 배경 남색 -->
+  <rect width="512" height="512" fill="#0B1230"></rect>
+
+  <!-- 중앙의 큰 9 -->
+  <text x="256" y="340" text-anchor="middle" font-family="Impact, Arial Black, system-ui, sans-serif" font-size="360" fill="#39FF14" stroke="#C6FFC6" stroke-width="10" paint-order="stroke fill" filter="url(#glowGreen)">
+    9
+  </text>
+
+  <!-- 레트로 픽셀 느낌 8분음표 -->
+  <!-- 픽셀처럼 보이게: 작은 크기 + 굵은 스트로크 -->
+  <text x="380" y="330" text-anchor="middle" font-family="Courier New, monospace" font-size="96" fill="#FF2DDA" stroke="#FFD1F3" stroke-width="5" paint-order="stroke fill" filter="url(#glowPink)">
+    ♪
+  </text>
+</svg>
