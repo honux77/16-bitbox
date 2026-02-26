@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-26T05:14:38.893Z",
+  "generatedAt": "2026-02-26T07:39:16.696Z",
   "games": [
     {
       "id": "Daikoukai_Jidai__Sharp_X68000_",
@@ -5649,6 +5649,646 @@
       ]
     },
     {
+      "id": "Dragon_Quest_I___II__EMU__zophar",
+      "format": "spc",
+      "zipFile": "Dragon Quest I & II (EMU).zophar.zip",
+      "title": "Dragon Quest 1 & 2",
+      "titleJp": "",
+      "system": "Super Nintendo",
+      "author": "Koichi Sugiyama",
+      "coverImage": "covers/Dragon_Quest_I___II__EMU__zophar.png",
+      "ogImage": "og-covers/Dragon_Quest_I___II__EMU__zophar.png",
+      "trackCount": 47,
+      "tracks": [
+        {
+          "filename": "101 Overture (Full).spc",
+          "name": "Overture (Full)",
+          "duration": 64,
+          "fade": 10000
+        },
+        {
+          "filename": "102 Overture (Part 1).spc",
+          "name": "Overture (Part 1)",
+          "duration": 12,
+          "fade": 10000
+        },
+        {
+          "filename": "103 Overture (Part 2).spc",
+          "name": "Overture (Part 2)",
+          "duration": 53,
+          "fade": 10000
+        },
+        {
+          "filename": "201 Erdrick's Descendant.spc",
+          "name": "Erdrick's Descendant",
+          "duration": 69,
+          "fade": 7000
+        },
+        {
+          "filename": "202 Tantegel Castle.spc",
+          "name": "Tantegel Castle",
+          "duration": 289,
+          "fade": 8000
+        },
+        {
+          "filename": "203 Peaceful Village.spc",
+          "name": "Peaceful Village",
+          "duration": 171,
+          "fade": 8000
+        },
+        {
+          "filename": "204 Kingdom of Alefgard.spc",
+          "name": "Kingdom of Alefgard",
+          "duration": 239,
+          "fade": 9000
+        },
+        {
+          "filename": "205 A Monster Draws Near.spc",
+          "name": "A Monster Draws Near",
+          "duration": 180,
+          "fade": 7000
+        },
+        {
+          "filename": "206 Thou Hast Died....spc",
+          "name": "Thou Hast Died...",
+          "duration": 7,
+          "fade": 10000
+        },
+        {
+          "filename": "207 Ancestor's Legacy.spc",
+          "name": "Ancestor's Legacy",
+          "duration": 292,
+          "fade": 6000
+        },
+        {
+          "filename": "208 Dark Dungeon ~ Floor 1.spc",
+          "name": "Dark Dungeon ~ Floor 1",
+          "duration": 31,
+          "fade": 15000
+        },
+        {
+          "filename": "209 Dark Dungeon ~ Floor 2.spc",
+          "name": "Dark Dungeon ~ Floor 2",
+          "duration": 40,
+          "fade": 20000
+        },
+        {
+          "filename": "210 Dark Dungeon ~ Floor 3.spc",
+          "name": "Dark Dungeon ~ Floor 3",
+          "duration": 82,
+          "fade": 13000
+        },
+        {
+          "filename": "211 Dark Dungeon ~ Floor 4.spc",
+          "name": "Dark Dungeon ~ Floor 4",
+          "duration": 47,
+          "fade": 8000
+        },
+        {
+          "filename": "212 Princess Gwaelin's Love.spc",
+          "name": "Princess Gwaelin's Love",
+          "duration": 8,
+          "fade": 10000
+        },
+        {
+          "filename": "213 Rainbow Bridge.spc",
+          "name": "Rainbow Bridge",
+          "duration": 7,
+          "fade": 10000
+        },
+        {
+          "filename": "214 Throne of Darkness.spc",
+          "name": "Throne of Darkness",
+          "duration": 58,
+          "fade": 9000
+        },
+        {
+          "filename": "215 The Dragonlord.spc",
+          "name": "The Dragonlord",
+          "duration": 213,
+          "fade": 10000
+        },
+        {
+          "filename": "216 Hero's Fanfare.spc",
+          "name": "Hero's Fanfare",
+          "duration": 136,
+          "fade": 10000
+        },
+        {
+          "filename": "217 Victory!.spc",
+          "name": "Victory!",
+          "duration": 2,
+          "fade": 10000
+        },
+        {
+          "filename": "218 Improvement.spc",
+          "name": "Improvement",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "219 Good Night.spc",
+          "name": "Good Night",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "220 Special Item.spc",
+          "name": "Special Item",
+          "duration": 2,
+          "fade": 10000
+        },
+        {
+          "filename": "221 Cursed!.spc",
+          "name": "Cursed!",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "222 Fairy Flute.spc",
+          "name": "Fairy Flute",
+          "duration": 8,
+          "fade": 10000
+        },
+        {
+          "filename": "223 Silver Harp.spc",
+          "name": "Silver Harp",
+          "duration": 6,
+          "fade": 10000
+        },
+        {
+          "filename": "301 Joyous Song.spc",
+          "name": "Joyous Song",
+          "duration": 304,
+          "fade": 6000
+        },
+        {
+          "filename": "302 Blue Skies ~ Ill Omen.spc",
+          "name": "Blue Skies ~ Ill Omen",
+          "duration": 180,
+          "fade": 10000
+        },
+        {
+          "filename": "303 All Hope is Lost....spc",
+          "name": "All Hope is Lost...",
+          "duration": 209,
+          "fade": 10000
+        },
+        {
+          "filename": "304 Royal Palace.spc",
+          "name": "Royal Palace",
+          "duration": 137,
+          "fade": 10000
+        },
+        {
+          "filename": "305 A Lonely Youth.spc",
+          "name": "A Lonely Youth",
+          "duration": 138,
+          "fade": 9000
+        },
+        {
+          "filename": "306 Demon Attack.spc",
+          "name": "Demon Attack",
+          "duration": 86,
+          "fade": 7000
+        },
+        {
+          "filename": "307 Busy City Streets.spc",
+          "name": "Busy City Streets",
+          "duration": 171,
+          "fade": 8000
+        },
+        {
+          "filename": "308 Underground.spc",
+          "name": "Underground",
+          "duration": 77,
+          "fade": 9000
+        },
+        {
+          "filename": "309 Friendship.spc",
+          "name": "Friendship",
+          "duration": 10,
+          "fade": 10000
+        },
+        {
+          "filename": "310 Prophecy.spc",
+          "name": "Prophecy",
+          "duration": 73,
+          "fade": 11000
+        },
+        {
+          "filename": "311 Travelling with Friends.spc",
+          "name": "Travelling with Friends",
+          "duration": 146,
+          "fade": 9000
+        },
+        {
+          "filename": "312 Ever Upwards.spc",
+          "name": "Ever Upwards",
+          "duration": 108,
+          "fade": 9000
+        },
+        {
+          "filename": "313 Riding the Waves.spc",
+          "name": "Riding the Waves",
+          "duration": 129,
+          "fade": 8000
+        },
+        {
+          "filename": "314 The Spirit of Rubiss.spc",
+          "name": "The Spirit of Rubiss",
+          "duration": 30,
+          "fade": 10000
+        },
+        {
+          "filename": "315 Malroth ~ The True Evil.spc",
+          "name": "Malroth ~ The True Evil",
+          "duration": 280,
+          "fade": 9000
+        },
+        {
+          "filename": "316 Recounting our Journey.spc",
+          "name": "Recounting our Journey",
+          "duration": 241,
+          "fade": 10000
+        },
+        {
+          "filename": "317 Sleep Well.spc",
+          "name": "Sleep Well",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "318 Won the Lottery!.spc",
+          "name": "Won the Lottery!",
+          "duration": 7,
+          "fade": 10000
+        },
+        {
+          "filename": "319 Saint's Prayer.spc",
+          "name": "Saint's Prayer",
+          "duration": 7,
+          "fade": 10000
+        },
+        {
+          "filename": "320 Echoing Flute.spc",
+          "name": "Echoing Flute",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "321 Echoing Flute (Echo).spc",
+          "name": "Echoing Flute (Echo)",
+          "duration": 9,
+          "fade": 10000
+        }
+      ]
+    },
+    {
+      "id": "Dragon_Quest_III___And_into_the_Legend_____EMU__zophar",
+      "format": "spc",
+      "zipFile": "Dragon Quest III - And into the Legend... (EMU).zophar.zip",
+      "title": "Dragon Quest 3",
+      "titleJp": "",
+      "system": "Super Nintendo",
+      "author": "Koichi Sugiyama",
+      "coverImage": "covers/Dragon_Quest_III___And_into_the_Legend_____EMU__zophar.jpg",
+      "ogImage": "og-covers/Dragon_Quest_III___And_into_the_Legend_____EMU__zophar.png",
+      "trackCount": 55,
+      "tracks": [
+        {
+          "filename": "01 Overture ~ Roto's Theme.spc",
+          "name": "Overture ~ Roto's Theme",
+          "duration": 103,
+          "fade": 10000
+        },
+        {
+          "filename": "02 Intermezzo.spc",
+          "name": "Intermezzo",
+          "duration": 55,
+          "fade": 6650
+        },
+        {
+          "filename": "03 Prologue.spc",
+          "name": "Prologue",
+          "duration": 273,
+          "fade": 13730
+        },
+        {
+          "filename": "04 Distant Memories.spc",
+          "name": "Distant Memories",
+          "duration": 112,
+          "fade": 10400
+        },
+        {
+          "filename": "05 Town.spc",
+          "name": "Town",
+          "duration": 128,
+          "fade": 7799
+        },
+        {
+          "filename": "06 Night Town.spc",
+          "name": "Night Town",
+          "duration": 77,
+          "fade": 7500
+        },
+        {
+          "filename": "07 Castle ~ Rondo.spc",
+          "name": "Castle ~ Rondo",
+          "duration": 94,
+          "fade": 10289
+        },
+        {
+          "filename": "08 Night Castle.spc",
+          "name": "Night Castle",
+          "duration": 111,
+          "fade": 12109
+        },
+        {
+          "filename": "09 Adventure.spc",
+          "name": "Adventure",
+          "duration": 142,
+          "fade": 7639
+        },
+        {
+          "filename": "10 Battle Theme.spc",
+          "name": "Battle Theme",
+          "duration": 70,
+          "fade": 11000
+        },
+        {
+          "filename": "11 Requiem.spc",
+          "name": "Requiem",
+          "duration": 169,
+          "fade": 10970
+        },
+        {
+          "filename": "12 Dungeon.spc",
+          "name": "Dungeon",
+          "duration": 188,
+          "fade": 11439
+        },
+        {
+          "filename": "13 Village.spc",
+          "name": "Village",
+          "duration": 214,
+          "fade": 8949
+        },
+        {
+          "filename": "14 Night Village.spc",
+          "name": "Night Village",
+          "duration": 166,
+          "fade": 12330
+        },
+        {
+          "filename": "15 Tower.spc",
+          "name": "Tower",
+          "duration": 151,
+          "fade": 7190
+        },
+        {
+          "filename": "16 Small Shrine.spc",
+          "name": "Small Shrine",
+          "duration": 113,
+          "fade": 6620
+        },
+        {
+          "filename": "17 Boogie-Woogie.spc",
+          "name": "Boogie-Woogie",
+          "duration": 148,
+          "fade": 8259
+        },
+        {
+          "filename": "18 Rolling Dice.spc",
+          "name": "Rolling Dice",
+          "duration": 114,
+          "fade": 10929
+        },
+        {
+          "filename": "19 Sleeping Village.spc",
+          "name": "Sleeping Village",
+          "duration": 104,
+          "fade": 10000
+        },
+        {
+          "filename": "20 Wake Up Powder.spc",
+          "name": "Wake Up Powder",
+          "duration": 8,
+          "fade": 10000
+        },
+        {
+          "filename": "21 Pyramid.spc",
+          "name": "Pyramid",
+          "duration": 128,
+          "fade": 8099
+        },
+        {
+          "filename": "22 Sailing.spc",
+          "name": "Sailing",
+          "duration": 151,
+          "fade": 9000
+        },
+        {
+          "filename": "23 Jipang.spc",
+          "name": "Jipang",
+          "duration": 107,
+          "fade": 9240
+        },
+        {
+          "filename": "24 The Palace of Himiko.spc",
+          "name": "The Palace of Himiko",
+          "duration": 80,
+          "fade": 10490
+        },
+        {
+          "filename": "25 The Phantom Ship.spc",
+          "name": "The Phantom Ship",
+          "duration": 103,
+          "fade": 8160
+        },
+        {
+          "filename": "26 The Song of Sadness.spc",
+          "name": "The Song of Sadness",
+          "duration": 8,
+          "fade": 10000
+        },
+        {
+          "filename": "27 Memories of Love 1.spc",
+          "name": "Memories of Love 1",
+          "duration": 10,
+          "fade": 10000
+        },
+        {
+          "filename": "28 Memories of Love 2.spc",
+          "name": "Memories of Love 2",
+          "duration": 13,
+          "fade": 10000
+        },
+        {
+          "filename": "29 The Reverie of Phoenix 1.spc",
+          "name": "The Reverie of Phoenix 1",
+          "duration": 16,
+          "fade": 10000
+        },
+        {
+          "filename": "30 The Reverie of Phoenix 2.spc",
+          "name": "The Reverie of Phoenix 2",
+          "duration": 37,
+          "fade": 10000
+        },
+        {
+          "filename": "31 Heavenly Flight.spc",
+          "name": "Heavenly Flight",
+          "duration": 186,
+          "fade": 12230
+        },
+        {
+          "filename": "32 The Archfiend's Castle.spc",
+          "name": "The Archfiend's Castle",
+          "duration": 590,
+          "fade": 15619
+        },
+        {
+          "filename": "33 Gruelling Fight.spc",
+          "name": "Gruelling Fight",
+          "duration": 243,
+          "fade": 13150
+        },
+        {
+          "filename": "34 Unknown World.spc",
+          "name": "Unknown World",
+          "duration": 80,
+          "fade": 12210
+        },
+        {
+          "filename": "35 Town of Alefgard.spc",
+          "name": "Town of Alefgard",
+          "duration": 179,
+          "fade": 9339
+        },
+        {
+          "filename": "36 Chateau Ladutorm.spc",
+          "name": "Chateau Ladutorm",
+          "duration": 242,
+          "fade": 8360
+        },
+        {
+          "filename": "37 Dungeon of Alefgard.spc",
+          "name": "Dungeon of Alefgard",
+          "duration": 324,
+          "fade": 8179
+        },
+        {
+          "filename": "38 Fairy Flute.spc",
+          "name": "Fairy Flute",
+          "duration": 11,
+          "fade": 10000
+        },
+        {
+          "filename": "39 Rainbow Bridge.spc",
+          "name": "Rainbow Bridge",
+          "duration": 5,
+          "fade": 10000
+        },
+        {
+          "filename": "40 Hero's Challenge.spc",
+          "name": "Hero's Challenge",
+          "duration": 110,
+          "fade": 9640
+        },
+        {
+          "filename": "41 The Light Returns.spc",
+          "name": "The Light Returns",
+          "duration": 9,
+          "fade": 10000
+        },
+        {
+          "filename": "42 Into the Legend.spc",
+          "name": "Into the Legend",
+          "duration": 184,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Church.spc",
+          "name": "Church",
+          "duration": 7,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Cursed.spc",
+          "name": "Cursed",
+          "duration": 4,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Echoing Flute (Echo).spc",
+          "name": "Echoing Flute (Echo)",
+          "duration": 14,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Echoing Flute.spc",
+          "name": "Echoing Flute",
+          "duration": 6,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Fanfare 1.spc",
+          "name": "Fanfare 1",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Fanfare 2.spc",
+          "name": "Fanfare 2",
+          "duration": 8,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Fanfare 3.spc",
+          "name": "Fanfare 3",
+          "duration": 19,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Level Up!.spc",
+          "name": "Level Up!",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Save.spc",
+          "name": "Save",
+          "duration": 4,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Silver Harp.spc",
+          "name": "Silver Harp",
+          "duration": 4,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Special Item.spc",
+          "name": "Special Item",
+          "duration": 2,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Victory.spc",
+          "name": "Victory",
+          "duration": 2,
+          "fade": 10000
+        },
+        {
+          "filename": "99 Wayfarer's Inn.spc",
+          "name": "Wayfarer's Inn",
+          "duration": 4,
+          "fade": 10000
+        }
+      ]
+    },
+    {
       "id": "earthbound",
       "format": "spc",
       "zipFile": "earthbound.zip",
@@ -7310,6 +7950,512 @@
           "filename": "ff5-2-33.spc",
           "name": "Piano Lesson 8",
           "duration": 12,
+          "fade": 10000
+        }
+      ]
+    },
+    {
+      "id": "Final_Fantasy_VI__EMU__zophar",
+      "format": "spc",
+      "zipFile": "Final Fantasy VI (EMU).zophar.zip",
+      "title": "Final Fantasy 6",
+      "titleJp": "",
+      "system": "Super Nintendo",
+      "author": "Nobuo Uematsu",
+      "coverImage": "covers/Final_Fantasy_VI__EMU__zophar.jpg",
+      "ogImage": "og-covers/Final_Fantasy_VI__EMU__zophar.png",
+      "trackCount": 82,
+      "tracks": [
+        {
+          "filename": "101a Opening Theme (part 1).spc",
+          "name": "Opening Theme (part 1)",
+          "duration": 73,
+          "fade": 10000
+        },
+        {
+          "filename": "101b Opening Theme (part 2).spc",
+          "name": "Opening Theme (part 2)",
+          "duration": 68,
+          "fade": 10000
+        },
+        {
+          "filename": "101c Opening Theme (part 3).spc",
+          "name": "Opening Theme (part 3)",
+          "duration": 115,
+          "fade": 10000
+        },
+        {
+          "filename": "102 The Mines of Narshe.spc",
+          "name": "The Mines of Narshe",
+          "duration": 157,
+          "fade": 8000
+        },
+        {
+          "filename": "103 Awakening.spc",
+          "name": "Awakening",
+          "duration": 102,
+          "fade": 6000
+        },
+        {
+          "filename": "104 Locke.spc",
+          "name": "Locke",
+          "duration": 110,
+          "fade": 6000
+        },
+        {
+          "filename": "105 Battle Theme.spc",
+          "name": "Battle Theme",
+          "duration": 109,
+          "fade": 6000
+        },
+        {
+          "filename": "106 Fanfare.spc",
+          "name": "Fanfare",
+          "duration": 32,
+          "fade": 7000
+        },
+        {
+          "filename": "107 Edgar and Sabin.spc",
+          "name": "Edgar and Sabin",
+          "duration": 141,
+          "fade": 10000
+        },
+        {
+          "filename": "108 Kefka.spc",
+          "name": "Kefka",
+          "duration": 154,
+          "fade": 10000
+        },
+        {
+          "filename": "109 Mt. Koltz.spc",
+          "name": "Mt. Koltz",
+          "duration": 132,
+          "fade": 13000
+        },
+        {
+          "filename": "110 Returners.spc",
+          "name": "Returners",
+          "duration": 146,
+          "fade": 11000
+        },
+        {
+          "filename": "111 Shadow.spc",
+          "name": "Shadow",
+          "duration": 98,
+          "fade": 9000
+        },
+        {
+          "filename": "112 Troops March on.spc",
+          "name": "Troops March on",
+          "duration": 103,
+          "fade": 9000
+        },
+        {
+          "filename": "113 Cyan.spc",
+          "name": "Cyan",
+          "duration": 129,
+          "fade": 12000
+        },
+        {
+          "filename": "114 The Unforgiven.spc",
+          "name": "The Unforgiven",
+          "duration": 72,
+          "fade": 8000
+        },
+        {
+          "filename": "115 The Phantom Forest.spc",
+          "name": "The Phantom Forest",
+          "duration": 186,
+          "fade": 9000
+        },
+        {
+          "filename": "116 The Phantom Train.spc",
+          "name": "The Phantom Train",
+          "duration": 143,
+          "fade": 8000
+        },
+        {
+          "filename": "117 Wild West.spc",
+          "name": "Wild West",
+          "duration": 130,
+          "fade": 9000
+        },
+        {
+          "filename": "118 Gau.spc",
+          "name": "Gau",
+          "duration": 141,
+          "fade": 12000
+        },
+        {
+          "filename": "119 The Serpent Trench.spc",
+          "name": "The Serpent Trench",
+          "duration": 118,
+          "fade": 7000
+        },
+        {
+          "filename": "120 Kids Run Through the City.spc",
+          "name": "Kids Run Through the City",
+          "duration": 147,
+          "fade": 13000
+        },
+        {
+          "filename": "121 Under Martial Law.spc",
+          "name": "Under Martial Law",
+          "duration": 133,
+          "fade": 6000
+        },
+        {
+          "filename": "122 Celes.spc",
+          "name": "Celes",
+          "duration": 160,
+          "fade": 13000
+        },
+        {
+          "filename": "123 Save Them!.spc",
+          "name": "Save Them!",
+          "duration": 105,
+          "fade": 8000
+        },
+        {
+          "filename": "124 The Decisive Battle.spc",
+          "name": "The Decisive Battle",
+          "duration": 105,
+          "fade": 10000
+        },
+        {
+          "filename": "125 Metamorphasis.spc",
+          "name": "Metamorphasis",
+          "duration": 73,
+          "fade": 11000
+        },
+        {
+          "filename": "201 Terra.spc",
+          "name": "Terra",
+          "duration": 215,
+          "fade": 12000
+        },
+        {
+          "filename": "202 Coin Song.spc",
+          "name": "Coin Song",
+          "duration": 178,
+          "fade": 6000
+        },
+        {
+          "filename": "203 Techno de Chocobo.spc",
+          "name": "Techno de Chocobo",
+          "duration": 225,
+          "fade": 7000
+        },
+        {
+          "filename": "204 Forever Rachel!.spc",
+          "name": "Forever Rachel!",
+          "duration": 156,
+          "fade": 10000
+        },
+        {
+          "filename": "205 Slam Shuffle.spc",
+          "name": "Slam Shuffle",
+          "duration": 126,
+          "fade": 9000
+        },
+        {
+          "filename": "206 Spinach Rag.spc",
+          "name": "Spinach Rag",
+          "duration": 120,
+          "fade": 10000
+        },
+        {
+          "filename": "207a Overture (part 1).spc",
+          "name": "Overture (part 1)",
+          "duration": 103,
+          "fade": 10000
+        },
+        {
+          "filename": "207b Overture (part 2).spc",
+          "name": "Overture (part 2)",
+          "duration": 43,
+          "fade": 10000
+        },
+        {
+          "filename": "207c Overture (part 3).spc",
+          "name": "Overture (part 3)",
+          "duration": 127,
+          "fade": 8000
+        },
+        {
+          "filename": "208 Aria de Mezzo Carattere.spc",
+          "name": "Aria de Mezzo Carattere",
+          "duration": 235,
+          "fade": 10000
+        },
+        {
+          "filename": "209a The Wedding Waltz-Duel (part 1).spc",
+          "name": "The Wedding Waltz-Duel (part 1)",
+          "duration": 76,
+          "fade": 9000
+        },
+        {
+          "filename": "209b The Wedding Waltz-Duel (part 2).spc",
+          "name": "The Wedding Waltz-Duel (part 2)",
+          "duration": 33,
+          "fade": 10000
+        },
+        {
+          "filename": "209c The Wedding Waltz-Duel (part 3).spc",
+          "name": "The Wedding Waltz-Duel (part 3)",
+          "duration": 44,
+          "fade": 10000
+        },
+        {
+          "filename": "209d The Wedding Waltz-Duel (part 4).spc",
+          "name": "The Wedding Waltz-Duel (part 4)",
+          "duration": 85,
+          "fade": 12000
+        },
+        {
+          "filename": "210a Grand Finale (part 1).spc",
+          "name": "Grand Finale (part 1)",
+          "duration": 9,
+          "fade": 10000
+        },
+        {
+          "filename": "210b Grand Finale (part 2).spc",
+          "name": "Grand Finale (part 2)",
+          "duration": 174,
+          "fade": 11000
+        },
+        {
+          "filename": "211 Setzer.spc",
+          "name": "Setzer",
+          "duration": 99,
+          "fade": 11000
+        },
+        {
+          "filename": "212 Johnny C. Bad.spc",
+          "name": "Johnny C. Bad",
+          "duration": 159,
+          "fade": 9000
+        },
+        {
+          "filename": "213 The Empire Gestahl.spc",
+          "name": "The Empire Gestahl",
+          "duration": 170,
+          "fade": 9000
+        },
+        {
+          "filename": "214 Devil's Lab.spc",
+          "name": "Devil's Lab",
+          "duration": 118,
+          "fade": 12000
+        },
+        {
+          "filename": "215 Blackjack.spc",
+          "name": "Blackjack",
+          "duration": 163,
+          "fade": 9000
+        },
+        {
+          "filename": "216 ____.spc",
+          "name": "\"??\"",
+          "duration": 67,
+          "fade": 9000
+        },
+        {
+          "filename": "217 Mog.spc",
+          "name": "Mog",
+          "duration": 96,
+          "fade": 6000
+        },
+        {
+          "filename": "218 Strago.spc",
+          "name": "Strago",
+          "duration": 120,
+          "fade": 6000
+        },
+        {
+          "filename": "219 Relm.spc",
+          "name": "Relm",
+          "duration": 137,
+          "fade": 7000
+        },
+        {
+          "filename": "220 Another World of Beasts.spc",
+          "name": "Another World of Beasts",
+          "duration": 135,
+          "fade": 9000
+        },
+        {
+          "filename": "301 New Continent.spc",
+          "name": "New Continent",
+          "duration": 147,
+          "fade": 10000
+        },
+        {
+          "filename": "302 Catastrophe.spc",
+          "name": "Catastrophe",
+          "duration": 111,
+          "fade": 7000
+        },
+        {
+          "filename": "303 The Fierce Battle.spc",
+          "name": "The Fierce Battle",
+          "duration": 136,
+          "fade": 6000
+        },
+        {
+          "filename": "304 Rest in Peace.spc",
+          "name": "Rest in Peace",
+          "duration": 28,
+          "fade": 10000
+        },
+        {
+          "filename": "305 Dark World.spc",
+          "name": "Dark World",
+          "duration": 164,
+          "fade": 10000
+        },
+        {
+          "filename": "306 The Day After.spc",
+          "name": "The Day After",
+          "duration": 117,
+          "fade": 8000
+        },
+        {
+          "filename": "307 Searching for Friends.spc",
+          "name": "Searching for Friends",
+          "duration": 150,
+          "fade": 8000
+        },
+        {
+          "filename": "308 Gogo.spc",
+          "name": "Gogo",
+          "duration": 115,
+          "fade": 8000
+        },
+        {
+          "filename": "309 Epitaph.spc",
+          "name": "Epitaph",
+          "duration": 150,
+          "fade": 8000
+        },
+        {
+          "filename": "310 The Magic House.spc",
+          "name": "The Magic House",
+          "duration": 135,
+          "fade": 6000
+        },
+        {
+          "filename": "311 Umaro.spc",
+          "name": "Umaro",
+          "duration": 92,
+          "fade": 6000
+        },
+        {
+          "filename": "312 Fanatics.spc",
+          "name": "Fanatics",
+          "duration": 77,
+          "fade": 6000
+        },
+        {
+          "filename": "313 Last Dungeon.spc",
+          "name": "Last Dungeon",
+          "duration": 150,
+          "fade": 7000
+        },
+        {
+          "filename": "314a Dancing Mad (part 1).spc",
+          "name": "Dancing Mad (part 1)",
+          "duration": 215,
+          "fade": 8000
+        },
+        {
+          "filename": "314b Dancing Mad (part 2).spc",
+          "name": "Dancing Mad (part 2)",
+          "duration": 222,
+          "fade": 8000
+        },
+        {
+          "filename": "314c Dancing Mad (part 3).spc",
+          "name": "Dancing Mad (part 3)",
+          "duration": 190,
+          "fade": 8000
+        },
+        {
+          "filename": "314d Dancing Mad (part 4).spc",
+          "name": "Dancing Mad (part 4)",
+          "duration": 32,
+          "fade": 10000
+        },
+        {
+          "filename": "314e Dancing Mad (part 5).spc",
+          "name": "Dancing Mad (part 5)",
+          "duration": 313,
+          "fade": 7000
+        },
+        {
+          "filename": "315a Ending Theme (part 1).spc",
+          "name": "Ending Theme (part 1)",
+          "duration": 661,
+          "fade": 10000
+        },
+        {
+          "filename": "315b Ending Theme (part 2).spc",
+          "name": "Ending Theme (part 2)",
+          "duration": 635,
+          "fade": 10000
+        },
+        {
+          "filename": "316 The Prelude.spc",
+          "name": "The Prelude",
+          "duration": 153,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Blazing Fire.spc",
+          "name": "Blazing Fire",
+          "duration": 20,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Dancing Mad (Full).spc",
+          "name": "Dancing Mad (Full)",
+          "duration": 683,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Good Night.spc",
+          "name": "Good Night",
+          "duration": 5,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Quiet Beach.spc",
+          "name": "Quiet Beach",
+          "duration": 26,
+          "fade": 7000
+        },
+        {
+          "filename": "999 Rumbling.spc",
+          "name": "Rumbling",
+          "duration": 12,
+          "fade": 4000
+        },
+        {
+          "filename": "999 Strong Wind.spc",
+          "name": "Strong Wind",
+          "duration": 15,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Train.spc",
+          "name": "Train",
+          "duration": 17,
+          "fade": 7000
+        },
+        {
+          "filename": "999 Unused Fanfare.spc",
+          "name": "Unused Fanfare",
+          "duration": 5,
           "fade": 10000
         }
       ]
