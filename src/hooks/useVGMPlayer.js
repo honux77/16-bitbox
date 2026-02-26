@@ -11,7 +11,6 @@ export function useVGMPlayer() {
   const [elapsed, setElapsed] = useState(0)
   const uiStartRef = useRef(null)
   const nextTrackGuardRef = useRef(0)
-  const seekGuardRef = useRef(0)
   const elapsedRef = useRef(0)
 
   const contextRef = useRef(null)
@@ -45,11 +44,6 @@ export function useVGMPlayer() {
     if (!isPlayingRef.current || !workletNodeRef.current || !functionsRef.current) return
 
     if (functionsRef.current.VGMEnded()) {
-      // Ignore false VGMEnded triggers immediately after seeking
-      if (Date.now() - seekGuardRef.current < 1500) {
-        return
-      }
-
       // Auto-advance with guard to prevent double-trigger
       const now = Date.now()
       if (now - nextTrackGuardRef.current > 800) {
@@ -101,7 +95,6 @@ export function useVGMPlayer() {
         GetTrackLengthDirect: Module.cwrap('GetTrackLengthDirect', 'number', ['string']),
         SetSampleRate: Module.cwrap('SetSampleRate', 'number', ['number']),
         SetLoopCount: Module.cwrap('SetLoopCount', 'number', ['number']),
-        Seek: Module.cwrap('Seek', null, ['number']),
         ShowTitle: Module.cwrap('ShowTitle', 'string'),
       }
 
@@ -371,38 +364,6 @@ export function useVGMPlayer() {
     setTimeout(() => play(prevIdx), 100)
   }, [currentTrackIndex, trackList.length, stop, play])
 
-  const seek = useCallback((seconds) => {
-    if (!functionsRef.current || !currentTrack) return
-
-    // Reset file to start to ensure absolute seeking and prevent VGMEnded glitches
-    functionsRef.current.StopVGM()
-    functionsRef.current.CloseVGMFile()
-    functionsRef.current.OpenVGMFile(currentTrack.path)
-    functionsRef.current.SetLoopCount(2)
-    functionsRef.current.PlayVGM()
-
-    const samplePos = Math.floor(seconds * sampleRateRef.current)
-    if (samplePos > 0) {
-      functionsRef.current.Seek(samplePos)
-    }
-
-    if (workletNodeRef.current) {
-      workletNodeRef.current.port.postMessage({ type: 'clear' })
-      if (!isPlayingRef.current) {
-        workletNodeRef.current.port.postMessage({ type: 'pause' })
-      } else {
-        workletNodeRef.current.port.postMessage({ type: 'start' })
-      }
-    }
-
-    seekGuardRef.current = Date.now()
-    if (pumpBuffersRef.current) pumpBuffersRef.current()
-
-    uiStartRef.current = Date.now() - seconds * 1000
-    elapsedRef.current = Math.floor(seconds)
-    setElapsed(Math.floor(seconds))
-  }, [currentTrack])
-
   // Unlock AudioContext synchronously on user gesture (important for mobile)
   const resumeAudio = useCallback(() => {
     if (!contextRef.current || contextRef.current.state === 'closed') {
@@ -588,7 +549,6 @@ export function useVGMPlayer() {
     togglePlayback,
     nextTrack,
     prevTrack,
-    seek,
     resumeAudio
   }
 }

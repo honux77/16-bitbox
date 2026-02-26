@@ -550,7 +550,6 @@ function App() {
                 onPrev={player.prevTrack}
                 onStop={player.stop}
                 onSelectTrack={handleSelectTrack}
-                onSeek={player.seek}
                 frequencyData={player.frequencyData}
               />
             )}

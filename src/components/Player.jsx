@@ -23,7 +23,6 @@ export function Player({
   onPrev,
   onStop,
   onSelectTrack,
-  onSeek,
   frequencyData
 }) {
   const remaining = Math.max(0, duration - elapsed)
@@ -32,8 +31,6 @@ export function Player({
   const [isImageExpanded, setIsImageExpanded] = useState(false)
   const [expandedImageSize, setExpandedImageSize] = useState({ width: 0, height: 0 })
   const [toastMessage, setToastMessage] = useState(null)
-  const [isDragging, setIsDragging] = useState(false)
-  const [dragValue, setDragValue] = useState(0)
 
   // Copy current URL to clipboard
   const handleShare = async () => {
@@ -165,34 +162,6 @@ export function Player({
         <button className="control-btn share-btn" onClick={handleShare} title="Share URL">
           🔗
         </button>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="progress-bar-container">
-        <input
-          type="range"
-          className="progress-bar"
-          min={0}
-          max={duration || 0}
-          value={isDragging ? dragValue : elapsed}
-          disabled={!trackInfo || !duration}
-          onChange={(e) => {
-            setIsDragging(true)
-            setDragValue(Number(e.target.value))
-          }}
-          onMouseUp={(e) => {
-            setIsDragging(false)
-            onSeek?.(Number(e.target.value))
-          }}
-          onTouchEnd={(e) => {
-            setIsDragging(false)
-            onSeek?.(Number(e.target.value))
-          }}
-        />
-        <div className="progress-times">
-          <span className="time-elapsed">{formatTime(isDragging ? dragValue : elapsed)}</span>
-          <span className="time-remaining">-{formatTime(isDragging ? Math.max(0, duration - dragValue) : remaining)}</span>
-        </div>
       </div>
 
       {/* Toast Message */}
