@@ -11,6 +11,8 @@ export function useVGMPlayer() {
   const [elapsed, setElapsed] = useState(0)
   const uiStartRef = useRef(null)
   const nextTrackGuardRef = useRef(0)
+  const seekGuardRef = useRef(0)
+  const elapsedRef = useRef(0)
 
   const contextRef = useRef(null)
   const workletNodeRef = useRef(null)
@@ -27,24 +29,27 @@ export function useVGMPlayer() {
 
   // UI elapsed timer
   useEffect(() => {
-    if (isPlaying && currentTrack) {
-      uiStartRef.current = Date.now()
-      const dur = currentTrack?.length || 0
-      const id = setInterval(() => {
-        const t = ((Date.now() - uiStartRef.current) / 1000) | 0
-        setElapsed(Math.min(dur, t))
-      }, 250)
-      return () => clearInterval(id)
-    } else {
-      setElapsed(0)
-      uiStartRef.current = null
-    }
+    if (!isPlaying || !currentTrack) return
+    const dur = currentTrack?.length || 0
+    const id = setInterval(() => {
+      if (!uiStartRef.current) return
+      const t = ((Date.now() - uiStartRef.current) / 1000) | 0
+      const newElapsed = Math.min(dur, t)
+      elapsedRef.current = newElapsed
+      setElapsed(newElapsed)
+    }, 250)
+    return () => clearInterval(id)
   }, [isPlaying, currentTrack])
 
   const pumpBuffers = useCallback(() => {
     if (!isPlayingRef.current || !workletNodeRef.current || !functionsRef.current) return
 
     if (functionsRef.current.VGMEnded()) {
+      // Ignore false VGMEnded triggers immediately after seeking
+      if (Date.now() - seekGuardRef.current < 1500) {
+        return
+      }
+
       // Auto-advance with guard to prevent double-trigger
       const now = Date.now()
       if (now - nextTrackGuardRef.current > 800) {
@@ -91,8 +96,8 @@ export function useVGMPlayer() {
         CloseVGMFile: Module.cwrap('CloseVGMFile'),
         PlayVGM: Module.cwrap('PlayVGM'),
         StopVGM: Module.cwrap('StopVGM'),
-        VGMEnded: Module.cwrap('VGMEnded'),
-        GetTrackLength: Module.cwrap('GetTrackLength'),
+        VGMEnded: Module.cwrap('VGMEnded', 'number'),
+        GetTrackLength: Module.cwrap('GetTrackLength', 'number'),
         GetTrackLengthDirect: Module.cwrap('GetTrackLengthDirect', 'number', ['string']),
         SetSampleRate: Module.cwrap('SetSampleRate', 'number', ['number']),
         SetLoopCount: Module.cwrap('SetLoopCount', 'number', ['number']),
@@ -228,6 +233,8 @@ export function useVGMPlayer() {
     }
     isPlayingRef.current = false
     isGeneratingRef.current = false
+    uiStartRef.current = null
+    elapsedRef.current = 0
     setElapsed(0)
     setIsPlaying(false)
     setCurrentTrack(null)
@@ -305,6 +312,8 @@ export function useVGMPlayer() {
       length: track.lengthFormatted
     })
 
+    uiStartRef.current = Date.now()
+    elapsedRef.current = 0
     setCurrentTrack(track)
     setCurrentTrackIndex(idx)
 
@@ -327,15 +336,27 @@ export function useVGMPlayer() {
     setIsPlaying(false)
   }, [])
 
+  const resume = useCallback(() => {
+    if (!currentTrack || !workletNodeRef.current || !contextRef.current) return
+    if (contextRef.current.state === 'suspended') {
+      contextRef.current.resume().catch(() => { })
+    }
+    workletNodeRef.current.port.postMessage({ type: 'start' })
+    uiStartRef.current = Date.now() - elapsedRef.current * 1000
+    isPlayingRef.current = true
+    if (pumpBuffersRef.current) pumpBuffersRef.current()
+    setIsPlaying(true)
+  }, [currentTrack])
+
   const togglePlayback = useCallback(() => {
     if (isPlaying) {
       pause()
     } else if (currentTrack) {
-      play(currentTrackIndex)
+      resume()
     } else {
       play(0)
     }
-  }, [isPlaying, currentTrack, currentTrackIndex, pause, play])
+  }, [isPlaying, currentTrack, pause, resume, play])
 
   const nextTrack = useCallback(() => {
     nextTrackRef.current = nextTrack
@@ -351,12 +372,36 @@ export function useVGMPlayer() {
   }, [currentTrackIndex, trackList.length, stop, play])
 
   const seek = useCallback((seconds) => {
-    if (!functionsRef.current || !isPlayingRef.current) return
+    if (!functionsRef.current || !currentTrack) return
+
+    // Reset file to start to ensure absolute seeking and prevent VGMEnded glitches
+    functionsRef.current.StopVGM()
+    functionsRef.current.CloseVGMFile()
+    functionsRef.current.OpenVGMFile(currentTrack.path)
+    functionsRef.current.SetLoopCount(2)
+    functionsRef.current.PlayVGM()
+
     const samplePos = Math.floor(seconds * sampleRateRef.current)
-    functionsRef.current.Seek(samplePos)
+    if (samplePos > 0) {
+      functionsRef.current.Seek(samplePos)
+    }
+
+    if (workletNodeRef.current) {
+      workletNodeRef.current.port.postMessage({ type: 'clear' })
+      if (!isPlayingRef.current) {
+        workletNodeRef.current.port.postMessage({ type: 'pause' })
+      } else {
+        workletNodeRef.current.port.postMessage({ type: 'start' })
+      }
+    }
+
+    seekGuardRef.current = Date.now()
+    if (pumpBuffersRef.current) pumpBuffersRef.current()
+
     uiStartRef.current = Date.now() - seconds * 1000
+    elapsedRef.current = Math.floor(seconds)
     setElapsed(Math.floor(seconds))
-  }, [])
+  }, [currentTrack])
 
   // Unlock AudioContext synchronously on user gesture (important for mobile)
   const resumeAudio = useCallback(() => {

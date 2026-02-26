@@ -25,6 +25,10 @@ class VGMPlayProcessor extends AudioWorkletProcessor {
         this.queue = [];
         this.currentChunk = null;
         this.currentOffset = 0;
+      } else if (msg.type === 'clear') {
+        this.queue = [];
+        this.currentChunk = null;
+        this.currentOffset = 0;
       }
     };
   }

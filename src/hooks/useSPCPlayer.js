@@ -25,10 +25,10 @@ function loadSPCEngine() {
       try {
         const win = iframe.contentWindow
         if (win &&
-            typeof win._my_init === 'function' &&
-            typeof win._my_decode === 'function' &&
-            win.HEAP16 &&
-            win.Module && win.Module.calledRun) {
+          typeof win._my_init === 'function' &&
+          typeof win._my_decode === 'function' &&
+          win.HEAP16 &&
+          win.Module && win.Module.calledRun) {
           clearInterval(check)
 
           spcEngine = {
@@ -83,21 +83,20 @@ export function useSPCPlayer() {
   const fadeTimerRef = useRef(null)
   const endTimerRef = useRef(null)
   const isPlayingRef = useRef(false)
+  const elapsedRef = useRef(0)
 
   // UI elapsed timer
   useEffect(() => {
-    if (isPlaying && currentTrack) {
-      uiStartRef.current = Date.now()
-      const dur = currentTrack?.length || 0
-      const id = setInterval(() => {
-        const t = ((Date.now() - uiStartRef.current) / 1000) | 0
-        setElapsed(Math.min(dur, t))
-      }, 250)
-      return () => clearInterval(id)
-    } else {
-      setElapsed(0)
-      uiStartRef.current = null
-    }
+    if (!isPlaying || !currentTrack) return
+    const dur = currentTrack?.length || 0
+    const id = setInterval(() => {
+      if (!uiStartRef.current) return
+      const t = ((Date.now() - uiStartRef.current) / 1000) | 0
+      const newElapsed = Math.min(dur, t)
+      elapsedRef.current = newElapsed
+      setElapsed(newElapsed)
+    }, 250)
+    return () => clearInterval(id)
   }, [isPlaying, currentTrack])
 
   const parseSPCID666 = useCallback((buffer) => {
@@ -201,6 +200,8 @@ export function useSPCPlayer() {
       try { contextRef.current.suspend() } catch (e) { }
     }
     isPlayingRef.current = false
+    uiStartRef.current = null
+    elapsedRef.current = 0
     setElapsed(0)
     setIsPlaying(false)
     setCurrentTrack(null)
@@ -239,7 +240,7 @@ export function useSPCPlayer() {
       contextRef.current = new AudioContext()
     }
     if (contextRef.current.state === 'suspended') {
-      contextRef.current.resume().catch(() => {})
+      contextRef.current.resume().catch(() => { })
     }
 
     // Fresh audio nodes
@@ -312,6 +313,8 @@ export function useSPCPlayer() {
       length: track.lengthFormatted
     })
 
+    uiStartRef.current = Date.now()
+    elapsedRef.current = 0
     setCurrentTrack(track)
     setCurrentTrackIndex(idx)
     currentTrackIdxRef.current = idx
@@ -343,16 +346,62 @@ export function useSPCPlayer() {
   }, [trackList, currentTrackIndex, stop])
 
   const pause = useCallback(() => {
+    if (fadeTimerRef.current) { clearInterval(fadeTimerRef.current); clearTimeout(fadeTimerRef.current); fadeTimerRef.current = null }
+    if (endTimerRef.current) { clearTimeout(endTimerRef.current); endTimerRef.current = null }
     if (nodeRef.current) try { nodeRef.current.disconnect() } catch (e) { }
     isPlayingRef.current = false
     setIsPlaying(false)
   }, [])
 
+  const resume = useCallback(() => {
+    if (!currentTrack || !nodeRef.current || !gainNodeRef.current || !contextRef.current) return
+    if (contextRef.current.state === 'suspended') {
+      contextRef.current.resume().catch(() => { })
+    }
+    nodeRef.current.connect(gainNodeRef.current)
+    uiStartRef.current = Date.now() - elapsedRef.current * 1000
+    isPlayingRef.current = true
+    setIsPlaying(true)
+
+    if (fadeTimerRef.current) { clearInterval(fadeTimerRef.current); clearTimeout(fadeTimerRef.current); fadeTimerRef.current = null }
+    if (endTimerRef.current) { clearTimeout(endTimerRef.current); endTimerRef.current = null }
+
+    const spcEntry = spcDataRef.current[currentTrackIdxRef.current]
+    if (spcEntry) {
+      const dur = spcEntry.duration || 180
+      const fadeDur = spcEntry.fade || 10000
+      const remainingToFadeMs = dur * 1000 - elapsedRef.current * 1000
+
+      if (fadeDur > 0 && remainingToFadeMs > 0) {
+        fadeTimerRef.current = setTimeout(() => {
+          if (!isPlayingRef.current || !gainNodeRef.current) return
+          const steps = 20
+          const interval = fadeDur / steps
+          let step = 0
+          fadeTimerRef.current = setInterval(() => {
+            step++
+            if (gainNodeRef.current) gainNodeRef.current.gain.value = Math.max(0, 1 - step / steps)
+            if (step >= steps) { clearInterval(fadeTimerRef.current); fadeTimerRef.current = null }
+          }, interval)
+        }, remainingToFadeMs)
+      }
+
+      const remainingToEndMs = dur * 1000 + fadeDur + 500 - elapsedRef.current * 1000
+      if (remainingToEndMs > 0) {
+        endTimerRef.current = setTimeout(() => {
+          if (isPlayingRef.current && nextTrackRef.current) nextTrackRef.current()
+        }, remainingToEndMs)
+      } else {
+        setTimeout(() => { if (isPlayingRef.current && nextTrackRef.current) nextTrackRef.current() }, 100)
+      }
+    }
+  }, [currentTrack])
+
   const togglePlayback = useCallback(() => {
     if (isPlaying) pause()
-    else if (currentTrack) play(currentTrackIndex)
+    else if (currentTrack) resume()
     else play(0)
-  }, [isPlaying, currentTrack, currentTrackIndex, pause, play])
+  }, [isPlaying, currentTrack, pause, resume, play])
 
   const nextTrack = useCallback(() => {
     nextTrackRef.current = nextTrack
@@ -367,9 +416,15 @@ export function useSPCPlayer() {
 
   const seek = useCallback((seconds) => {
     const engine = spcEngine
-    if (!engine || !isPlayingRef.current) return
+    if (!engine) return
     const spcEntry = spcDataRef.current[currentTrackIdxRef.current]
     if (!spcEntry) return
+
+    // Clear stale fade/end timers from the original play() call
+    if (fadeTimerRef.current) { clearInterval(fadeTimerRef.current); clearTimeout(fadeTimerRef.current); fadeTimerRef.current = null }
+    if (endTimerRef.current) { clearTimeout(endTimerRef.current); endTimerRef.current = null }
+    // Reset gain in case a fade had already started
+    if (gainNodeRef.current) gainNodeRef.current.gain.value = 1.0
 
     // Re-init SPC engine from the start of the track
     const data = spcEntry.data
@@ -388,7 +443,37 @@ export function useSPCPlayer() {
     }
     engine.win.Module._free(ffBuf)
 
+    // Re-arm fade/end timers from the seek position
+    const dur = spcEntry.duration || 180
+    const fadeDur = spcEntry.fade || 10000
+    const remainingToFadeMs = dur * 1000 - seconds * 1000
+
+    if (fadeDur > 0 && remainingToFadeMs > 0) {
+      fadeTimerRef.current = setTimeout(() => {
+        if (!isPlayingRef.current || !gainNodeRef.current) return
+        const steps = 20
+        const interval = fadeDur / steps
+        let step = 0
+        fadeTimerRef.current = setInterval(() => {
+          step++
+          if (gainNodeRef.current) gainNodeRef.current.gain.value = Math.max(0, 1 - step / steps)
+          if (step >= steps) { clearInterval(fadeTimerRef.current); fadeTimerRef.current = null }
+        }, interval)
+      }, remainingToFadeMs)
+    }
+
+    const remainingToEndMs = dur * 1000 + fadeDur + 500 - seconds * 1000
+    if (remainingToEndMs > 0) {
+      endTimerRef.current = setTimeout(() => {
+        if (isPlayingRef.current && nextTrackRef.current) nextTrackRef.current()
+      }, remainingToEndMs)
+    } else {
+      // Seek position is past the track end — advance immediately
+      setTimeout(() => { if (isPlayingRef.current && nextTrackRef.current) nextTrackRef.current() }, 100)
+    }
+
     uiStartRef.current = Date.now() - seconds * 1000
+    elapsedRef.current = Math.floor(seconds)
     setElapsed(Math.floor(seconds))
   }, [])
 
@@ -421,9 +506,7 @@ export function useSPCPlayer() {
     }
     const handleVisibilityChange = async () => {
       if (document.visibilityState === 'hidden') {
-        if (nodeRef.current) try { nodeRef.current.disconnect() } catch (e) { }
-        isPlayingRef.current = false
-        setIsPlaying(false)
+        pause()
       } else if (document.visibilityState === 'visible') {
         await requestWakeLock()
         if (contextRef.current && contextRef.current.state === 'suspended') {

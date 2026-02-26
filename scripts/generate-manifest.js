@@ -7,9 +7,9 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const DIST_DIR = path.join(__dirname, '../../vgz')
-const SPC_DIR = path.join(__dirname, '../../spc')
-const OUTPUT_DIR = path.join(__dirname, '../public/music')
+const DIST_DIR = path.join(__dirname, '../vgz')
+const SPC_DIR = path.join(__dirname, '../spc')
+const OUTPUT_DIR = path.join(__dirname, 'public/music')
 const COVERS_DIR = path.join(OUTPUT_DIR, 'covers')
 const OG_COVERS_DIR = path.join(OUTPUT_DIR, 'og-covers')
 const MANIFEST_PATH = path.join(OUTPUT_DIR, 'manifest.json')
