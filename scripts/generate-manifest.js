@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename)
 
 const DIST_DIR = path.join(__dirname, '../vgz')
 const SPC_DIR = path.join(__dirname, '../spc')
-const OUTPUT_DIR = path.join(__dirname, 'public/music')
+const OUTPUT_DIR = path.join(__dirname, '../public/music')
 const COVERS_DIR = path.join(OUTPUT_DIR, 'covers')
 const OG_COVERS_DIR = path.join(OUTPUT_DIR, 'og-covers')
 const MANIFEST_PATH = path.join(OUTPUT_DIR, 'manifest.json')
@@ -288,7 +288,7 @@ async function processZipFile(zipPath, gameId) {
       // Check for special characters (non-ASCII)
       const hasNonAscii = /[^\x00-\x7F]/.test(filename)
       let sanitizedFilename = filename
-      
+
       if (hasNonAscii) {
         // Normalize special characters with comprehensive replacement
         sanitizedFilename = filename
@@ -308,7 +308,7 @@ async function processZipFile(zipPath, gameId) {
           .replace(/M[^a-zA-Z\s]*l[^a-zA-Z\s]*e/gi, 'Melee') // Fix Mêlée -> Melee
           // Remove any remaining non-ASCII
           .replace(/[^\x00-\x7F]/g, '')
-        
+
         hasSpecialChars = true
         filesToRename.push({ original: filename, sanitized: sanitizedFilename })
         console.log(`  ⚠ Special chars detected: "${filename}" -> "${sanitizedFilename}"`)
@@ -335,30 +335,30 @@ async function processZipFile(zipPath, gameId) {
   // If special characters were found, create a fixed ZIP file
   if (hasSpecialChars && filesToRename.length > 0) {
     console.log(`  🔧 Fixing ZIP file with ${filesToRename.length} renamed files...`)
-    
+
     const newZip = new JSZip()
-    
+
     // Copy all files with corrected names
     for (const [filename, file] of Object.entries(zip.files)) {
       if (file.dir) continue
-      
+
       const renamed = filesToRename.find(f => f.original === filename)
       const newName = renamed ? renamed.sanitized : filename
-      
+
       const content = await file.async('uint8array')
       newZip.file(newName, content)
     }
-    
+
     // Generate new ZIP
     const newZipData = await newZip.generateAsync({ type: 'uint8array', compression: 'DEFLATE' })
-    
+
     // Backup original and save fixed version
     const backupPath = zipPath.replace('.zip', '_backup.zip')
     if (!fs.existsSync(backupPath)) {
       fs.copyFileSync(zipPath, backupPath)
       console.log(`  ✓ Original backed up to: ${path.basename(backupPath)}`)
     }
-    
+
     fs.writeFileSync(zipPath, newZipData)
     console.log(`  ✓ ZIP file fixed and saved`)
   }
@@ -495,14 +495,14 @@ async function processSPCZipFile(zipPath, gameId) {
     try {
       const ogFileName = `${gameId}.png`
       const ogFullPath = path.join(OG_COVERS_DIR, ogFileName)
-      
+
       // Add trackCount and format to gameInfo for OG image
       const gameInfoWithMeta = {
         ...gameInfo,
         trackCount: tracks.length,
         format: 'spc'
       }
-      
+
       const { resW, resH } = await createOGImage(coverImageData, gameInfoWithMeta, ogFullPath)
       ogImagePath = `og-covers/${ogFileName}`
       console.log(`  -> Generated OG image: ${ogFileName} (cover ${resW}x${resH})`)
