@@ -84,6 +84,7 @@ export function useSPCPlayer() {
   const endTimerRef = useRef(null)
   const isPlayingRef = useRef(false)
   const elapsedRef = useRef(0)
+  const decodeBufPtrRef = useRef(0) // WASM heap pointer for decode buffer
 
   // UI elapsed timer
   useEffect(() => {
@@ -199,6 +200,11 @@ export function useSPCPlayer() {
     if (contextRef.current && contextRef.current.state === 'running') {
       try { contextRef.current.suspend() } catch (e) { }
     }
+    // Free WASM decode buffer to prevent memory leak
+    if (decodeBufPtrRef.current && spcEngine) {
+      try { spcEngine.win.Module._free(decodeBufPtrRef.current) } catch (e) { }
+      decodeBufPtrRef.current = 0
+    }
     isPlayingRef.current = false
     uiStartRef.current = null
     elapsedRef.current = 0
@@ -260,9 +266,12 @@ export function useSPCPlayer() {
     analyser.smoothingTimeConstant = 0.8
     analyserRef.current = analyser
 
-    // Load SPC into WASM memory
-    const spcPtr = engine.allocate(spcEntry.data, 'i8', engine.ALLOC_STACK)
+    // Load SPC into WASM memory using _malloc/_free (not ALLOC_STACK which leaks)
+    const module = engine.win.Module
+    const spcPtr = module._malloc(spcEntry.data.length)
+    new Uint8Array(module.HEAPU8.buffer, spcPtr, spcEntry.data.length).set(spcEntry.data)
     engine._my_init(spcPtr, spcEntry.data.length)
+    module._free(spcPtr) // _my_init copies the data internally, safe to free
 
     // Resampling: SPC outputs 32kHz
     const inRate = 32000
@@ -270,14 +279,17 @@ export function useSPCPlayer() {
     const ratio = inRate / outRate
     const lastSample = 1 + Math.floor(frameSize * ratio)
 
-    // Decode buffer in WASM heap
+    // Decode buffer in WASM heap - freed in stop() via decodeBufPtrRef
+    if (decodeBufPtrRef.current) {
+      try { module._free(decodeBufPtrRef.current) } catch (e) { }
+    }
     const bufSize = 4 * (lastSample - 1)
-    const buf = engine.allocate(new Uint8Array(bufSize + 4), 'i8', engine.ALLOC_STACK)
+    const buf = module._malloc(bufSize + 4)
+    decodeBufPtrRef.current = buf
 
     const getHEAP16 = () => engine.win.HEAP16
 
-    const sampleAt = (chan, x) => {
-      const heap16 = getHEAP16()
+    const sampleAt = (heap16, chan, x) => {
       const offset = ratio * x
       const bufferOffset = Math.floor(offset)
       const high = offset - bufferOffset
@@ -288,12 +300,21 @@ export function useSPCPlayer() {
 
     nodeRef.current.onaudioprocess = (e) => {
       if (!isPlayingRef.current) return
-      engine._my_decode(buf, lastSample * 2)
-      const output = e.outputBuffer
-      for (let chan = 0; chan < output.numberOfChannels; chan++) {
-        const outData = output.getChannelData(chan)
-        for (let k = 0; k < outData.length; k++) {
-          outData[k] = sampleAt(chan, k) / 32000
+      try {
+        engine._my_decode(buf, lastSample * 2)
+        const heap16 = getHEAP16() // re-fetch each call in case WASM memory grew
+        const output = e.outputBuffer
+        for (let chan = 0; chan < output.numberOfChannels; chan++) {
+          const outData = output.getChannelData(chan)
+          for (let k = 0; k < outData.length; k++) {
+            outData[k] = sampleAt(heap16, chan, k) / 32000
+          }
+        }
+      } catch (err) {
+        // Output silence on error to prevent audio pipeline crash
+        const output = e.outputBuffer
+        for (let chan = 0; chan < output.numberOfChannels; chan++) {
+          output.getChannelData(chan).fill(0)
         }
       }
     }
@@ -490,6 +511,20 @@ export function useSPCPlayer() {
   }, [])
 
   useEffect(() => { nextTrackRef.current = nextTrack }, [nextTrack])
+
+  // AudioContext statechange recovery: iOS can suspend AudioContext externally
+  // (phone call, Siri, etc.). Resume automatically when playing.
+  useEffect(() => {
+    const ctx = contextRef.current
+    if (!ctx) return
+    const handleStateChange = () => {
+      if (isPlayingRef.current && ctx.state === 'suspended') {
+        ctx.resume().catch(() => { })
+      }
+    }
+    ctx.addEventListener('statechange', handleStateChange)
+    return () => ctx.removeEventListener('statechange', handleStateChange)
+  }, [isPlaying]) // re-bind whenever context may have been recreated
 
   // Screen Wake Lock
   useEffect(() => {
