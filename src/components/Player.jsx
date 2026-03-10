@@ -22,6 +22,7 @@ export function Player({
   onNext,
   onPrev,
   onStop,
+  onSeek,
   onSelectTrack,
   frequencyData
 }) {
@@ -31,6 +32,9 @@ export function Player({
   const [isImageExpanded, setIsImageExpanded] = useState(false)
   const [expandedImageSize, setExpandedImageSize] = useState({ width: 0, height: 0 })
   const [toastMessage, setToastMessage] = useState(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragValue, setDragValue] = useState(0)
+  const seekValueRef = useRef(0)
 
   // Copy current URL to clipboard
   const handleShare = async () => {
@@ -168,6 +172,41 @@ export function Player({
       {toastMessage && (
         <div className="toast-message">{toastMessage}</div>
       )}
+
+      {/* Progress Bar */}
+      <div className="progress-bar-container">
+        <input
+          type="range"
+          className="progress-bar"
+          min={0}
+          max={duration || 0}
+          value={isDragging ? dragValue : elapsed}
+          disabled={!duration}
+          style={{ '--progress': duration ? (isDragging ? dragValue : elapsed) / duration : 0 }}
+          onChange={(e) => {
+            const v = Number(e.target.value)
+            seekValueRef.current = v
+            setDragValue(v)
+            setIsDragging(true)
+          }}
+          onMouseUp={() => {
+            if (isDragging) {
+              onSeek(seekValueRef.current)
+              setIsDragging(false)
+            }
+          }}
+          onTouchEnd={() => {
+            if (isDragging) {
+              onSeek(seekValueRef.current)
+              setIsDragging(false)
+            }
+          }}
+        />
+        <div className="progress-times">
+          <span className="time-elapsed">{formatTime(isDragging ? dragValue : elapsed)}</span>
+          <span className="time-remaining">-{formatTime(isDragging ? Math.max(0, duration - dragValue) : remaining)}</span>
+        </div>
+      </div>
 
       {/* Visualizer (Canvas-based frequency spectrum) */}
       <div className="visualizer">

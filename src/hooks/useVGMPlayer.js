@@ -96,6 +96,7 @@ export function useVGMPlayer() {
         SetSampleRate: Module.cwrap('SetSampleRate', 'number', ['number']),
         SetLoopCount: Module.cwrap('SetLoopCount', 'number', ['number']),
         ShowTitle: Module.cwrap('ShowTitle', 'string'),
+        Seek: Module.cwrap('Seek', 'number', ['number', 'number']),
       }
 
       // Allocate WASM heap buffers for Float32 audio (N=4096, Float32=4 bytes)
@@ -341,6 +342,16 @@ export function useVGMPlayer() {
     setIsPlaying(true)
   }, [currentTrack])
 
+  const seek = useCallback((seconds) => {
+    if (!functionsRef.current || !workletNodeRef.current) return
+    functionsRef.current.Seek(Math.floor(seconds), Math.round((seconds % 1) * 1000))
+    workletNodeRef.current.port.postMessage({ type: 'clear' })
+    uiStartRef.current = Date.now() - seconds * 1000
+    elapsedRef.current = Math.floor(seconds)
+    setElapsed(Math.floor(seconds))
+    if (pumpBuffersRef.current) pumpBuffersRef.current()
+  }, [])
+
   const togglePlayback = useCallback(() => {
     if (isPlaying) {
       pause()
@@ -546,6 +557,7 @@ export function useVGMPlayer() {
     play,
     pause,
     stop,
+    seek,
     togglePlayback,
     nextTrack,
     prevTrack,
