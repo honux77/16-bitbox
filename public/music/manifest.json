@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-26T07:39:16.696Z",
+  "generatedAt": "2026-03-10T02:10:00.626Z",
   "games": [
     {
       "id": "Daikoukai_Jidai__Sharp_X68000_",
@@ -5645,6 +5645,572 @@
           "filename": "17 To a New Adventure.vgz",
           "name": "To a New Adventure",
           "nameJp": "新たなる冒険へ"
+        }
+      ]
+    },
+    {
+      "id": "Chrono_Trigger",
+      "format": "spc",
+      "zipFile": "Chrono Trigger.zip",
+      "title": "Chrono Trigger",
+      "titleJp": "",
+      "system": "Super Nintendo",
+      "author": "Yasunori Mitsuda",
+      "coverImage": "covers/Chrono_Trigger.png",
+      "ogImage": "og-covers/Chrono_Trigger.png",
+      "trackCount": 92,
+      "tracks": [
+        {
+          "filename": "101 Presentiment.spc",
+          "name": "Presentiment",
+          "duration": 32,
+          "fade": 10000
+        },
+        {
+          "filename": "102 Chrono Trigger (Looped).spc",
+          "name": "Chrono Trigger (Looped)",
+          "duration": 74,
+          "fade": 7000
+        },
+        {
+          "filename": "102 Chrono Trigger.spc",
+          "name": "Chrono Trigger",
+          "duration": 120,
+          "fade": 10000
+        },
+        {
+          "filename": "103 Morning Sunlight.spc",
+          "name": "Morning Sunlight",
+          "duration": 37,
+          "fade": 10000
+        },
+        {
+          "filename": "104 Peaceful Days.spc",
+          "name": "Peaceful Days",
+          "duration": 151,
+          "fade": 10000
+        },
+        {
+          "filename": "105 Memories of Green.spc",
+          "name": "Memories of Green",
+          "duration": 213,
+          "fade": 13000
+        },
+        {
+          "filename": "106 Guardia Millennial Fair.spc",
+          "name": "Guardia Millennial Fair",
+          "duration": 181,
+          "fade": 8000
+        },
+        {
+          "filename": "107 Gato's Song.spc",
+          "name": "Gato's Song",
+          "duration": 19,
+          "fade": 10000
+        },
+        {
+          "filename": "108 A Strange Happening.spc",
+          "name": "A Strange Happening",
+          "duration": 85,
+          "fade": 6000
+        },
+        {
+          "filename": "109 Wind Scene.spc",
+          "name": "Wind Scene",
+          "duration": 183,
+          "fade": 12000
+        },
+        {
+          "filename": "110 Goodnight.spc",
+          "name": "Goodnight",
+          "duration": 6,
+          "fade": 10000
+        },
+        {
+          "filename": "111 Secret of the Forest.spc",
+          "name": "Secret of the Forest",
+          "duration": 267,
+          "fade": 7000
+        },
+        {
+          "filename": "112 Battle 1.spc",
+          "name": "Battle 1",
+          "duration": 90,
+          "fade": 6000
+        },
+        {
+          "filename": "113 Courage and Pride.spc",
+          "name": "Courage and Pride",
+          "duration": 192,
+          "fade": 8000
+        },
+        {
+          "filename": "114 Huh_!.spc",
+          "name": "Huh?!",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "115 Manoria Cathedral.spc",
+          "name": "Manoria Cathedral",
+          "duration": 29,
+          "fade": 7000
+        },
+        {
+          "filename": "116 A Prayer to the Road that Leads.spc",
+          "name": "A Prayer to the Road that Leads",
+          "duration": 10,
+          "fade": 10000
+        },
+        {
+          "filename": "117 Silent Light.spc",
+          "name": "Silent Light",
+          "duration": 126,
+          "fade": 6000
+        },
+        {
+          "filename": "118 Boss Battle 1.spc",
+          "name": "Boss Battle 1",
+          "duration": 68,
+          "fade": 11000
+        },
+        {
+          "filename": "119 Frog's Theme.spc",
+          "name": "Frog's Theme",
+          "duration": 61,
+          "fade": 8000
+        },
+        {
+          "filename": "120 Fanfare 1.spc",
+          "name": "Fanfare 1",
+          "duration": 32,
+          "fade": 7000
+        },
+        {
+          "filename": "121 Kingdom Trial.spc",
+          "name": "Kingdom Trial",
+          "duration": 206,
+          "fade": 9000
+        },
+        {
+          "filename": "122 The Hidden Truth (Looped).spc",
+          "name": "The Hidden Truth (Looped)",
+          "duration": 52,
+          "fade": 7000
+        },
+        {
+          "filename": "122 The Hidden Truth.spc",
+          "name": "The Hidden Truth",
+          "duration": 57,
+          "fade": 10000
+        },
+        {
+          "filename": "123 A Shot of Crisis.spc",
+          "name": "A Shot of Crisis",
+          "duration": 98,
+          "fade": 12000
+        },
+        {
+          "filename": "201 Ruined World.spc",
+          "name": "Ruined World",
+          "duration": 140,
+          "fade": 8000
+        },
+        {
+          "filename": "202 Mystery of the Past.spc",
+          "name": "Mystery of the Past",
+          "duration": 5,
+          "fade": 10000
+        },
+        {
+          "filename": "203 Lab 16's Ruin.spc",
+          "name": "Lab 16's Ruin",
+          "duration": 76,
+          "fade": 7000
+        },
+        {
+          "filename": "204 People Without Hope (Variant 1).spc",
+          "name": "People Without Hope (Variant 1)",
+          "duration": 166,
+          "fade": 10000
+        },
+        {
+          "filename": "204 People Without Hope (Variant 2).spc",
+          "name": "People Without Hope (Variant 2)",
+          "duration": 166,
+          "fade": 10000
+        },
+        {
+          "filename": "204 People Without Hope.spc",
+          "name": "People Without Hope",
+          "duration": 166,
+          "fade": 10000
+        },
+        {
+          "filename": "205 Lavos' Theme (Extended).spc",
+          "name": "Lavos' Theme (Extended)",
+          "duration": 289,
+          "fade": 9000
+        },
+        {
+          "filename": "205 Lavos' Theme.spc",
+          "name": "Lavos' Theme",
+          "duration": 81,
+          "fade": 8000
+        },
+        {
+          "filename": "206 The Day the World Revived.spc",
+          "name": "The Day the World Revived",
+          "duration": 64,
+          "fade": 7000
+        },
+        {
+          "filename": "207 Robo Gang Johnny.spc",
+          "name": "Robo Gang Johnny",
+          "duration": 77,
+          "fade": 9000
+        },
+        {
+          "filename": "208 Bike Chase.spc",
+          "name": "Bike Chase",
+          "duration": 52,
+          "fade": 9000
+        },
+        {
+          "filename": "209 Robo's Theme.spc",
+          "name": "Robo's Theme",
+          "duration": 74,
+          "fade": 9000
+        },
+        {
+          "filename": "210 Remains of the Factory.spc",
+          "name": "Remains of the Factory",
+          "duration": 171,
+          "fade": 9000
+        },
+        {
+          "filename": "211 Battle 2.spc",
+          "name": "Battle 2",
+          "duration": 73,
+          "fade": 10000
+        },
+        {
+          "filename": "212 Fanfare 2.spc",
+          "name": "Fanfare 2",
+          "duration": 5,
+          "fade": 10000
+        },
+        {
+          "filename": "213 Brink of Time.spc",
+          "name": "Brink of Time",
+          "duration": 132,
+          "fade": 10000
+        },
+        {
+          "filename": "214 Delightful Spekkio.spc",
+          "name": "Delightful Spekkio",
+          "duration": 151,
+          "fade": 10000
+        },
+        {
+          "filename": "215 Fanfare 3.spc",
+          "name": "Fanfare 3",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "216 Underground Sewer (No Water).spc",
+          "name": "Underground Sewer (No Water)",
+          "duration": 121,
+          "fade": 6000
+        },
+        {
+          "filename": "216 Underground Sewer.spc",
+          "name": "Underground Sewer",
+          "duration": 126,
+          "fade": 6000
+        },
+        {
+          "filename": "217 Boss Battle 2.spc",
+          "name": "Boss Battle 2",
+          "duration": 144,
+          "fade": 7000
+        },
+        {
+          "filename": "218 Primitive Mountain.spc",
+          "name": "Primitive Mountain",
+          "duration": 170,
+          "fade": 10000
+        },
+        {
+          "filename": "219 Ayla's Theme.spc",
+          "name": "Ayla's Theme",
+          "duration": 68,
+          "fade": 11000
+        },
+        {
+          "filename": "220 Rhythm of Wind, Sky and Earth.spc",
+          "name": "Rhythm of Wind, Sky and Earth",
+          "duration": 96,
+          "fade": 8000
+        },
+        {
+          "filename": "221 Burn! Bobonga!.spc",
+          "name": "Burn! Bobonga!",
+          "duration": 77,
+          "fade": 8000
+        },
+        {
+          "filename": "222 Magus' Castle.spc",
+          "name": "Magus' Castle",
+          "duration": 26,
+          "fade": 10000
+        },
+        {
+          "filename": "223 Confusing Melody.spc",
+          "name": "Confusing Melody",
+          "duration": 61,
+          "fade": 8000
+        },
+        {
+          "filename": "224 Battle with Magus.spc",
+          "name": "Battle with Magus",
+          "duration": 164,
+          "fade": 6000
+        },
+        {
+          "filename": "301 Singing Mountain.spc",
+          "name": "Singing Mountain",
+          "duration": 109,
+          "fade": 8000
+        },
+        {
+          "filename": "302 Tyran Castle.spc",
+          "name": "Tyran Castle",
+          "duration": 212,
+          "fade": 13000
+        },
+        {
+          "filename": "303 At the Bottom of Night.spc",
+          "name": "At the Bottom of Night",
+          "duration": 133,
+          "fade": 10000
+        },
+        {
+          "filename": "304 Corridors of Time.spc",
+          "name": "Corridors of Time",
+          "duration": 163,
+          "fade": 9000
+        },
+        {
+          "filename": "305 Zeal Palace.spc",
+          "name": "Zeal Palace",
+          "duration": 217,
+          "fade": 10000
+        },
+        {
+          "filename": "306 Schala's Theme.spc",
+          "name": "Schala's Theme",
+          "duration": 146,
+          "fade": 9000
+        },
+        {
+          "filename": "307 Sealed Door.spc",
+          "name": "Sealed Door",
+          "duration": 144,
+          "fade": 7000
+        },
+        {
+          "filename": "308 Undersea Palace.spc",
+          "name": "Undersea Palace",
+          "duration": 180,
+          "fade": 10000
+        },
+        {
+          "filename": "309 Far Off Promise.spc",
+          "name": "Far Off Promise",
+          "duration": 95,
+          "fade": 8000
+        },
+        {
+          "filename": "310 Wings That Cross Time.spc",
+          "name": "Wings That Cross Time",
+          "duration": 183,
+          "fade": 7000
+        },
+        {
+          "filename": "311 Black Omen.spc",
+          "name": "Black Omen",
+          "duration": 165,
+          "fade": 11000
+        },
+        {
+          "filename": "312 Determination.spc",
+          "name": "Determination",
+          "duration": 52,
+          "fade": 10000
+        },
+        {
+          "filename": "313 World Revolution.spc",
+          "name": "World Revolution",
+          "duration": 212,
+          "fade": 6000
+        },
+        {
+          "filename": "314 Last Battle.spc",
+          "name": "Last Battle",
+          "duration": 206,
+          "fade": 11000
+        },
+        {
+          "filename": "315 First Festival of Stars.spc",
+          "name": "First Festival of Stars",
+          "duration": 148,
+          "fade": 9000
+        },
+        {
+          "filename": "316 Epilogue ~ To Good Friends.spc",
+          "name": "Epilogue ~ To Good Friends",
+          "duration": 117,
+          "fade": 10000
+        },
+        {
+          "filename": "317 To Far Away Times.spc",
+          "name": "To Far Away Times",
+          "duration": 259,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Blackbird (Inside).spc",
+          "name": "Blackbird (Inside)",
+          "duration": 11,
+          "fade": 5000
+        },
+        {
+          "filename": "999 Blackbird (Outside).spc",
+          "name": "Blackbird (Outside)",
+          "duration": 10,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Breath of Lavos.spc",
+          "name": "Breath of Lavos",
+          "duration": 9,
+          "fade": 9000
+        },
+        {
+          "filename": "999 Earthquake.spc",
+          "name": "Earthquake",
+          "duration": 8,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Fall of Zeal.spc",
+          "name": "Fall of Zeal",
+          "duration": 72,
+          "fade": 9000
+        },
+        {
+          "filename": "999 Lavos Stirs (Faster).spc",
+          "name": "Lavos Stirs (Faster)",
+          "duration": 10,
+          "fade": 6000
+        },
+        {
+          "filename": "999 Lavos Stirs.spc",
+          "name": "Lavos Stirs",
+          "duration": 12,
+          "fade": 6000
+        },
+        {
+          "filename": "999 Leene's Bell.spc",
+          "name": "Leene's Bell",
+          "duration": 12,
+          "fade": 5000
+        },
+        {
+          "filename": "999 Mystic Chanting.spc",
+          "name": "Mystic Chanting",
+          "duration": 8,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Ocean Waves.spc",
+          "name": "Ocean Waves",
+          "duration": 37,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Ozzie Laugh.spc",
+          "name": "Ozzie Laugh",
+          "duration": 2,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Ozzie Scream.spc",
+          "name": "Ozzie Scream",
+          "duration": 4,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Prison Tower.spc",
+          "name": "Prison Tower",
+          "duration": 52,
+          "fade": 7000
+        },
+        {
+          "filename": "999 Quiet Beach.spc",
+          "name": "Quiet Beach",
+          "duration": 40,
+          "fade": 4000
+        },
+        {
+          "filename": "999 Rain and Flowing Water.spc",
+          "name": "Rain and Flowing Water",
+          "duration": 6,
+          "fade": 5000
+        },
+        {
+          "filename": "999 Rat-a-Tat-Tat It's... Mitsuda.spc",
+          "name": "Rat-a-Tat-Tat It's... Mitsuda",
+          "duration": 3,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Strong Wind.spc",
+          "name": "Strong Wind",
+          "duration": 28,
+          "fade": 8000
+        },
+        {
+          "filename": "999 Time Vortex.spc",
+          "name": "Time Vortex",
+          "duration": 238,
+          "fade": 6000
+        },
+        {
+          "filename": "999 Truce Canyon.spc",
+          "name": "Truce Canyon",
+          "duration": 15,
+          "fade": 9000
+        },
+        {
+          "filename": "999 Tsunami.spc",
+          "name": "Tsunami",
+          "duration": 27,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Unknown Fanfare.spc",
+          "name": "Unknown Fanfare",
+          "duration": 15,
+          "fade": 10000
+        },
+        {
+          "filename": "999 Voice of Lavos.spc",
+          "name": "Voice of Lavos",
+          "duration": 6,
+          "fade": 10000
         }
       ]
     },
